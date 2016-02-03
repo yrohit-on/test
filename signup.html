@@ -1,0 +1,39 @@
+<ion-view title="Signup">
+    <ion-content overflow-scroll="true" padding="true" scroll="false" class="has-header">
+        <form class="list" novalidate name="signupForm" ng-submit="doSignUp(signupForm)">
+            <ion-list>
+                <label class="item item-input">
+                    <input type="text" name="firstName" placeholder="First Name" ng-model="signUpData.firstName" ng-required="true">
+                </label>
+                <label class="item item-input">
+                    <input type="text" name="lastName" placeholder="Last Name" ng-model="signUpData.lastName">
+                </label>
+                <label class="item item-input">
+                    <input type="email" name="email" placeholder="E-mail" ng-model="signUpData.email" ng-required="true">
+                </label>
+                <label class="item item-input">
+                    <input type="tel" name="mobile" placeholder="Mobile" ng-model="signUpData.mobile" ng-required="true">
+                </label>
+                <label class="item item-input">
+                    <input type="password" name="password" placeholder="Password" ng-model="signUpData.password" ng-required="true" ng-minlength="8">
+                </label>
+                <label class="item item-input">
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password" ng-model="signUpData.confirmPassword" confirm-pwd="signUpData.password">
+                </label>
+            </ion-list>
+            
+            <div class="padding">
+                <p ng-show="signupForm.firstName.$error.required && signupForm.$submitted">* First name is required</p>
+                <p ng-show="signupForm.email.$error.required && signupForm.$submitted">* Email is required</p>
+                <p ng-show="signupForm.mobile.$error.required && signupForm.$submitted">* Mobile is required</p>
+                <p ng-show="signupForm.password.$error.required && signupForm.$submitted">* Password is required</p>
+                <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine">* Enter valid email address</p>
+                <p ng-show="signupForm.password.$error.minlength && signupForm.$submitted">* Password must be longer than 8 characters</p>
+                <p ng-show="signupForm.confirmPassword.$error.password">* Password must be same</p>
+            </div>
+            
+            <div class="spacer" style="width: 300px; height: 70px;"></div>
+            <button class="button button-assertive button-block" type="submit">Sign up</button>
+        </form>
+    </ion-content>
+</ion-view>
